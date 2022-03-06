@@ -5,7 +5,7 @@ services:
     image: "postgres:11.5"
     container_name: postgres_sgt
     environment:
-      - "POSTGRES_USER=admin"
+      - "POSTGRES_USER=basis-Latitude-3410"
       - "POSTGRES_DB=sgt_api_development"
       - "POSTGRES_PASSWORD=admin"
 
