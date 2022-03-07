@@ -1,4 +1,6 @@
 class TaskSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  set_key_transform :dash
+
+  attributes :id, :name_task
 end

@@ -1,25 +1,15 @@
 class SchedulesController < ApplicationController
     skip_before_action :verify_authenticity_token
-    before_action :set_schedule, only: %i[show update destroy]
+    before_action :set_params, only: %i[show update destroy]
 
     def create
         @schedule = Schedule.new(schedule_params)
-        # byebug
         if @schedule.save
             render json: ScheduleSerializer.new(@schedule)
         else
             render json: @schedule.errors
         end
     end
-
-    # def create
-    #     @user = User.new(user_params)
-    #     if @user.save
-    #         render json: @user
-    #     else
-    #         render json: @user.error
-    #     end
-    # end
 
     def show
         render json: ScheduleSerializer.new(@schedule)
@@ -46,7 +36,7 @@ class SchedulesController < ApplicationController
         ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 
-    def set_schedule
+    def set_params
         if Schedule.find(params[:id])
             @schedule = Schedule.find(params[:id])
         end
