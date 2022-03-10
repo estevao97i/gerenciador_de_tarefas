@@ -7,7 +7,7 @@ class SchedulesController < ApplicationController
         if @schedule.save
             render json: ScheduleSerializer.new(@schedule)
         else
-            render json: @schedule.errors
+            render json: {message: "error to create the schedule"}, status: unprocessable_entity
         end
     end
 
@@ -27,7 +27,7 @@ class SchedulesController < ApplicationController
 
     def destroy
         if @schedule.destroy
-            render json: {message: "destruído com sucesso!"}
+            render json: {message: "destroyed!"}
         end    
     end
 

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         if @user.save
             render json: @user
         else
-            render json: @user.error
+            render json: {message: "error to create user"}, status: :unprocessable_entity
         end
     end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     def destroy
         if @user.destroy
-            render json: {message: "apagado com sucesso!"}
+            render json: {message: "successfully destroyed!"}
         end    
     end
 
