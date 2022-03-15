@@ -35,6 +35,12 @@ class SchedulesController < ApplicationController
         end    
     end
 
+    # def countByName
+    #     if Schedule.find(params[:id])
+    #         Schedule.find(params[:name_task]).count
+    #     end
+    # end
+
     private
     def schedule_params
         ActiveModelSerializers::Deserialization.jsonapi_parse(params)
@@ -44,6 +50,6 @@ class SchedulesController < ApplicationController
         if Schedule.find(params[:id])
             @schedule = Schedule.find(params[:id])
         end
-
     end
+
 end
