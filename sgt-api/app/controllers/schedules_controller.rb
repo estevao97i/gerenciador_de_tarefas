@@ -12,7 +12,11 @@ class SchedulesController < ApplicationController
     end
 
     def show
-        render json: ScheduleSerializer.new(@schedule)
+        if @schedule.nil?
+            render json: {message: "error to show schedule"}, status: unprocessable_entity
+        else    
+            render json: ScheduleSerializer.new(@schedule)
+        end
     end
 
     def update
